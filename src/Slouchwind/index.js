@@ -11,6 +11,6 @@ export class Head extends React.Component {
                     <LinkBlock href="./editor">项目</LinkBlock>
                 </div>
             </div>
-        )
+        );
     }
 }
