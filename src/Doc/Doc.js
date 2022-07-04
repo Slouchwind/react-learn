@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import "./Doc.css";
 
 function Square(props) {
@@ -20,25 +19,24 @@ class Board extends React.Component {
         );
     }
 
-    renderSquareMap(i) {
-        i *= 3;
-        return (
-            <div className="board-row">
-                {this.renderSquare(i)}
-                {this.renderSquare(i + 1)}
-                {this.renderSquare(i + 2)}
-            </div>
-        );
+    renderSquareRow(start, index) {
+        let row = [];
+        for (let i = 0; i < index; i++) {
+            row.push(this.renderSquare(start + i));
+        }
+        return <div className="board-row">{row}</div>;
+    }
+
+    renderSquareMap(width, height) {
+        let map = [];
+        for (let i = 0; i < height; i++) {
+            map.push(this.renderSquareRow(i * width, width));
+        }
+        return map;
     }
 
     render() {
-        return (
-            <div>
-                {this.renderSquareMap(0)}
-                {this.renderSquareMap(1)}
-                {this.renderSquareMap(2)}
-            </div>
-        );
+        return <div>{this.renderSquareMap(3, 3)}</div>;
     }
 }
 
@@ -100,7 +98,12 @@ class Game extends React.Component {
         if (winner) {
             status = "胜利者: " + winner;
         } else {
-            status = "下一个玩家: " + (this.state.xIsNext ? "X" : "O");
+            if (history.length == 10 && this.state.stepNumber == 9) {
+                status = "平局";
+            }
+            else {
+                status = "下一个玩家: " + (this.state.xIsNext ? "X" : "O");
+            }
         }
 
         return (

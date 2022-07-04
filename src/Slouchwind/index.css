@@ -1,0 +1,162 @@
+/*全局css*/
+
+:root {
+    --main: #719fe3;
+    --main-hover: #96bbf1;
+    --main-active: #4c7dd6;
+    --main-bg: #1c1c1c;
+    --main-color: #ffffff;
+    --right-bg: #2525258f;
+    --right-hover: #00000040;
+    --right-shadow: #000000b3;
+    --scroll-bg: #2b2b2b;
+    --scroll-line-bg: #575757;
+    --head-bg: #1c1c1c40;
+    --head-shadow: #111111cc;
+    --card-bg: #292929;
+    --card-shadow: #111111;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: var(--scroll-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--scroll-line-bg);
+}
+
+::selection {
+    background-color: var(--main-active);
+    color: var(--main-bg);
+}
+
+body {
+    margin: 0;
+    background-color: var(--main-bg);
+    overflow: hidden;
+}
+
+* {
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+}
+
+a {
+    text-decoration: none;
+    font-size: 18px;
+    transition-duration: 0.2s;
+}
+
+p,
+h3 {
+    color: var(--main-color);
+    text-align: center;
+}
+
+p.title {
+    font-size: 3em;
+    margin-block-start: 5px;
+    margin-block-end: 5px;
+}
+
+/*导航栏*/
+
+div.head {
+    background-color: var(--head-bg);
+    color: var(--main);
+    width: 100%;
+    height: 75px;
+    box-shadow: 0px 2px 15px 0px var(--head-shadow);
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /*Safari*/
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.head>div div {
+    padding: 0 10px;
+    float: left;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+/*导航栏链接*/
+div.head a:link {
+    color: var(--main);
+}
+
+div.head a:visited {
+    color: var(--main);
+}
+
+div.head a:hover {
+    color: var(--main-hover);
+}
+
+div.head a:active {
+    color: var(--main-active);
+}
+
+/*左边栏*/
+div.head>div#left {
+    display: flex;
+}
+
+div#icon {
+    display: flex;
+}
+
+div#icon>img {
+    width: auto;
+    height: 65px;
+}
+
+/*右边栏*/
+div.head>div#right {
+    display: flex;
+    align-items: center;
+}
+
+div#time {
+    display: block;
+    padding: 5px;
+    border-radius: 5px;
+    height: 20px;
+    right: 10px;
+    transition-duration: 0.2s;
+    overflow: hidden;
+    font-size: 18px;
+    text-align: center;
+}
+
+div#time:hover {
+    height: 48px;
+}
+
+div#time>p {
+    margin: 0 5px;
+    font-family: consolas;
+}
+
+img[src="https://m.xiguacity.cn/post/6042be99fef5f8753d6c03c1/b60fa262-cfc1-406d-814c-2ffaf63baaf0.svg"],
+img[src="https://m.xiguacity.cn/post/6042be99fef5f8753d6c03c1/5c2cac44-609e-490e-ade0-78db98454575.svg"],
+img[src="https://m.xiguacity.cn/post/6042be99fef5f8753d6c03c1/94cb39ac-ef09-4ef4-ac35-c7f9a225699b.svg"] {
+    height: 30px;
+    margin-right: 5px;
+}
+
+div#top {
+    width: 100%;
+    height: 75px;
+    top: 0;
+}
