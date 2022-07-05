@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Head } from "./"
+import { Bottom, Head } from "./"
 import "../index.css";
 
 const index =
@@ -60,6 +60,7 @@ const index =
         <p>测试</p>
         <p>测试</p>
         <p>测试</p>
+        <Bottom />
     </>;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
