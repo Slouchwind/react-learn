@@ -64,7 +64,7 @@ div.head>div#right {
     align-items: center;
 }
 
-div#time {
+div#clock {
     display: block;
     padding: 5px;
     border-radius: 5px;
@@ -76,18 +76,16 @@ div#time {
     text-align: center;
 }
 
-div#time:hover {
+div#clock:hover {
     height: 48px;
 }
 
-div#time>p {
+div#clock>p {
     margin: 0 5px;
     font-family: consolas;
 }
 
-img[src="https://m.xiguacity.cn/post/6042be99fef5f8753d6c03c1/b60fa262-cfc1-406d-814c-2ffaf63baaf0.svg"],
-img[src="https://m.xiguacity.cn/post/6042be99fef5f8753d6c03c1/5c2cac44-609e-490e-ade0-78db98454575.svg"],
-img[src="https://m.xiguacity.cn/post/6042be99fef5f8753d6c03c1/94cb39ac-ef09-4ef4-ac35-c7f9a225699b.svg"] {
+img#color {
     height: 30px;
     margin-right: 5px;
 }
