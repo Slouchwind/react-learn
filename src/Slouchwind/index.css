@@ -1,3 +1,20 @@
+:root {
+    --main: #719fe3;
+    --main-hover: #96bbf1;
+    --main-active: #4c7dd6;
+    --main-bg: #1c1c1c;
+    --main-color: #ffffff;
+    --right-bg: #2525258f;
+    --right-hover: #00000040;
+    --right-shadow: #000000b3;
+    --scroll-bg: #2b2b2b;
+    --scroll-line-bg: #575757;
+    --head-bg: #1c1c1c40;
+    --head-shadow: #111111cc;
+    --card-bg: #292929;
+    --card-shadow: #111111;
+}
+
 /*导航栏*/
 
 div.head {
