@@ -1,2 +1,2 @@
-import "./Slouchwind/root";
-import "./Slouchwind/basic";
+import "./Slouchwind/reander";
+//import "./Slouchwind/basic";

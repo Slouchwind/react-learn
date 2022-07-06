@@ -31,7 +31,7 @@ var root = {
 }
 
 function turnMainColor(code) {
-    if (code == 0) {
+    if (code === 0) {
         root.replace("--main: #719fe3");
         root.replace("--main-hover: #96bbf1");
         root.replace("--main-active: #4c7dd6");
@@ -47,7 +47,7 @@ function turnMainColor(code) {
         root.replace("--card-bg: #ffffff");
         root.replace("--card-shadow: #989898");
     }
-    if (code == 1) {
+    if (code === 1) {
         root.replace("--main: #719fe3");
         root.replace("--main-hover: #96bbf1");
         root.replace("--main-active: #4c7dd6");
@@ -69,7 +69,7 @@ export function Icon(props) {
     return (
         <a href="./">
             <div id="icon">
-                <img src={props.src} />
+                <img src={props.src} alt={props.alt} />
             </div>
         </a>
     );
@@ -126,7 +126,7 @@ export class ColorMode extends React.Component {
     turnColorMode() {
         this.setState({ mode: (this.state.mode + 1) % 3 });
         turnMainColor(
-            this.state.mode == 3 ?
+            this.state.mode === 3 ?
                 window.matchMedia("(prefers-color-scheme: dark)").matches ?
                     0
                     : 1
@@ -142,6 +142,7 @@ export class ColorMode extends React.Component {
                     src={this.mode.src[this.state.mode]}
                     title={this.mode.title[this.state.mode]}
                     onClick={() => { this.turnColorMode() }}
+                    alt="颜色主题"
                 />
             </div>
         );
