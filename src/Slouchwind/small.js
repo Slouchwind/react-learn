@@ -7,3 +7,12 @@ export function ProfilePic(props) {
         </div>
     );
 }
+
+export function Card(props) {
+    return (
+        <div className="card">
+            <img src={props.src} />
+            <p>{props.children}</p>
+        </div>
+    );
+}

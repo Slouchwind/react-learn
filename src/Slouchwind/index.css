@@ -158,3 +158,44 @@ img.userImg {
     width: 25%;
     margin: 3em;
 }
+
+/*
+项目页面css
+*/
+
+div#editor {
+    margin: auto;
+    width: max-content;
+    height: 310px;
+}
+
+div.card {
+    border-radius: 32.5px;
+    background-color: var(--card-bg);
+    box-shadow: 0 0 15px var(--card-shadow);
+    margin: 15px 10px;
+    transition-duration: 0.3s;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: stretch;
+    float: left;
+    width: 65px;
+    height: 310px;
+}
+
+div.card:hover {
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0 0 20px 5px var(--card-shadow);
+}
+
+div.card>p {
+    margin: 10px auto;
+}
+
+div.card>img {
+    height: 190px;
+}
