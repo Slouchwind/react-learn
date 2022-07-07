@@ -11,7 +11,7 @@ export function Head() {
             <div className="head">
                 <div id="left">
                     <Icon src={icon} alt="icon" />
-                    <LinkBlock href="./editor">项目</LinkBlock>
+                    <LinkBlock href="./editor.html">项目</LinkBlock>
                 </div>
                 <div className="right">
                     <Clock />
@@ -28,7 +28,7 @@ export function Bottom() {
         <div id="bottom">
             <Link>
                 <a href="https://qixie.rth1.me/" target="_blank">齐谐者</a>
-                <a href="./about">关于</a>
+                <a href="./about.html">关于</a>
             </Link>
             <Hitokoto />
         </div>
