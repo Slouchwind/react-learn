@@ -35,22 +35,6 @@ function turnMainColor(code) {
         root.replace("--main: #719fe3");
         root.replace("--main-hover: #96bbf1");
         root.replace("--main-active: #4c7dd6");
-        root.replace("--main-bg: #ffffff");
-        root.replace("--main-color: #000000");
-        root.replace("--right-bg: #ffffffab");
-        root.replace("--right-hover: #0000001b");
-        root.replace("--right-shadow: #00000057");
-        root.replace("--scroll-bg: #d1d1d1");
-        root.replace("--scroll-line-bg: #929292");
-        root.replace("--head-bg: #ffffff12");
-        root.replace("--head-shadow: #00000057");
-        root.replace("--card-bg: #ffffff");
-        root.replace("--card-shadow: #989898");
-    }
-    if (code === 1) {
-        root.replace("--main: #719fe3");
-        root.replace("--main-hover: #96bbf1");
-        root.replace("--main-active: #4c7dd6");
         root.replace("--main-bg: #1c1c1c");
         root.replace("--main-color: #ffffff");
         root.replace("--right-bg: #2525258f");
@@ -62,6 +46,22 @@ function turnMainColor(code) {
         root.replace("--head-shadow: #111111cc");
         root.replace("--card-bg: #292929");
         root.replace("--card-shadow: #111111");
+    }
+    if (code === 1) {
+        root.replace("--main: #719fe3");
+        root.replace("--main-hover: #96bbf1");
+        root.replace("--main-active: #4c7dd6");
+        root.replace("--main-bg: #ffffff");
+        root.replace("--main-color: #000000");
+        root.replace("--right-bg: #ffffffab");
+        root.replace("--right-hover: #0000001b");
+        root.replace("--right-shadow: #00000057");
+        root.replace("--scroll-bg: #d1d1d1");
+        root.replace("--scroll-line-bg: #929292");
+        root.replace("--head-bg: #ffffff12");
+        root.replace("--head-shadow: #00000057");
+        root.replace("--card-bg: #ffffff");
+        root.replace("--card-shadow: #989898");
     }
 }
 
@@ -120,17 +120,23 @@ export class ColorMode extends React.Component {
                 "切换到「深色主题」"
             ],
         };
-        this.state = { mode: 0 };
+        localStorage.mode = localStorage.mode || 0;
+        this.state = { i: 0 };
     }
 
-    turnColorMode() {
-        this.setState({ mode: (this.state.mode + 1) % 3 });
+    componentDidMount() {
+        this.turnColorMode(0);
+    }
+
+    turnColorMode(i = 1) {
+        this.setState({ i: this.state.i + 1 });
+        localStorage.mode = (Number(localStorage.mode) + i) % 3;
         turnMainColor(
-            this.state.mode === 3 ?
+            Number(localStorage.mode) === 2 ?
                 window.matchMedia("(prefers-color-scheme: dark)").matches ?
                     0
                     : 1
-                : this.state.mode
+                : Number(localStorage.mode)
         );
     }
 
@@ -139,8 +145,8 @@ export class ColorMode extends React.Component {
             <div>
                 <img
                     id="color"
-                    src={this.mode.src[this.state.mode]}
-                    title={this.mode.title[this.state.mode]}
+                    src={this.mode.src[Number(localStorage.mode)]}
+                    title={this.mode.title[Number(localStorage.mode)]}
                     onClick={() => { this.turnColorMode() }}
                     alt="颜色主题"
                 />

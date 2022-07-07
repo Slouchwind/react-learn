@@ -139,3 +139,22 @@ div#bottom>div#A>a {
 div#bottom>div#A>a:active {
     font-size: 15px;
 }
+
+div#bottom p {
+    color: #ffffff;
+}
+
+/*
+关于页面css
+*/
+
+div#user {
+    margin: auto;
+    text-align: center;
+}
+
+img.userImg {
+    border-radius: 50%;
+    width: 25%;
+    margin: 3em;
+}

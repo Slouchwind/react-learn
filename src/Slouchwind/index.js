@@ -44,3 +44,11 @@ export function Basic(props) {
         </>
     )
 }
+
+export function Repeat(props = { index: 1 }) {
+    let repeat = [];
+    for (let i = 0; i < props.index; i++) {
+        repeat.push(props.children);
+    }
+    return repeat;
+}
