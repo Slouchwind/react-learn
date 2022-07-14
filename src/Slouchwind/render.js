@@ -4,6 +4,7 @@ import { Basic, Repeat } from ".";
 import { Card, ProfilePic } from "./small";
 import "../index.css";
 
+// eslint-disable-next-line
 const index =
     <Basic>
         <h3>清晨花蕊，静满泪水。</h3>
@@ -13,6 +14,7 @@ const index =
         </Repeat>
     </Basic>
 
+// eslint-disable-next-line
 const about =
     <Basic>
         <p>感谢您来访春鹄的个人网站！</p>
@@ -21,6 +23,7 @@ const about =
         <ProfilePic src="https://pic.lienav.com/i/2022/05/10/627a4567b4b27.jpg" />
     </Basic>
 
+// eslint-disable-next-line
 const editor =
     <Basic>
         <div id="editor">

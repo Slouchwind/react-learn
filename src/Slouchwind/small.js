@@ -3,7 +3,7 @@ import React from "react";
 export function ProfilePic(props) {
     return (
         <div id="user">
-            <img src={props.src} className="userImg" />
+            <img src={props.src} className="userImg" alt="作者头像" />
         </div>
     );
 }
@@ -11,7 +11,7 @@ export function ProfilePic(props) {
 export function Card(props) {
     return (
         <div className="card">
-            <img src={props.src} />
+            <img src={props.src} alt="卡片" />
             <p>{props.children}</p>
         </div>
     );
@@ -45,6 +45,7 @@ function getTextWidth(text, font) {
 export class RightMouse extends React.Component {
     componentDidMount() {
         document.oncontextmenu = this.rightMouse;
+        document.onclick = () => document.getElementsByClassName("rightMouse")[0].style.display = "none";
     }
 
     liOnclick(i) {
@@ -53,7 +54,7 @@ export class RightMouse extends React.Component {
                 textCopy(mouseSelect("\n"));
                 break;
             case 1:
-                window.open("https://www.baidu.com/s?word=" + mouseSelect(), "_blank");
+                window.open(`https://www.baidu.com/s?word=${mouseSelect()}`, "_blank");
                 break;
             case 2:
                 textCopy(window.location.href);
@@ -70,23 +71,19 @@ export class RightMouse extends React.Component {
         var ul = document.getElementsByClassName("rightMouse")[0];
         ul.onselectstart = () => false;
         //更改右键菜单宽度
-        if (getTextWidth('搜索"' + mouseSelect() + '"', "12px") > 64 && window.getSelection().toString() !== "") {
-            if (getTextWidth('搜索"' + mouseSelect() + '"', "12px") < 300) {
-                ul.style.width = getTextWidth('搜索"' + mouseSelect() + '"', "12px") + 72 + "px";
-            }
-            else {
-                ul.style.width = "372px";
-            }
+        let search = `搜索"${mouseSelect()}"`;
+        if (getTextWidth(search, "12px") > 64 && window.getSelection().toString() !== "") {
+            ul.style.width = getTextWidth(search, "12px") < 300 ?
+                getTextWidth(search, "12px") + 72 + "px"
+                : "372px";
         }
-        else {
-            ul.style.width = "136px";
-        }
-        var lis = document.querySelectorAll("li");
+        else ul.style.width = "136px";
+        var lis = document.querySelectorAll("ul.rightMouse li");
         //没有选中文字时隐藏复制&搜索选项
         if (window.getSelection().toString() !== "") {
             lis[0].style.display = "list-item";
             lis[1].style.display = "list-item";
-            lis[1].innerText = '搜索"' + mouseSelect() + '"';
+            lis[1].innerText = search;
         }
         else {
             lis[0].style.display = "none";
@@ -102,14 +99,13 @@ export class RightMouse extends React.Component {
         ul.style.display = "block";
         ul.style.left = x + "px";
         ul.style.top = y + "px";
-        //点击左键时删除右键菜单
-        document.onclick = () => ul.style.display = "none";
     }
 
     render() {
         var liText = ["复制", "搜索", "复制当前页面链接", "重新加载"];
         var liJSX = [];
         liText.map(
+            // eslint-disable-next-line
             (value, index) => {
                 liJSX.push(
                     <li
@@ -119,10 +115,6 @@ export class RightMouse extends React.Component {
                 );
             }
         );
-        return (
-            <ul id="ul" className="rightMouse">
-                {liJSX}
-            </ul>
-        );
+        return <ul className="rightMouse">{liJSX}</ul>;
     }
 }

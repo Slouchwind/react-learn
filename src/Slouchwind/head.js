@@ -1,7 +1,7 @@
 import React from "react";
 
 var getTime = {
-    time: function (date) {
+    time: (date) => {
         let h = date.getHours();
         if (h < 10) { h = "0" + h; }
         let m = date.getMinutes();
@@ -10,7 +10,7 @@ var getTime = {
         if (s < 10) { s = "0" + s; }
         return h + ":" + m + ":" + s;
     },
-    date: function (date) {
+    date: (date) => {
         let y = date.getFullYear();
         let m = date.getMonth() + 1;
         if (m < 10) { m = "0" + m; }
@@ -21,10 +21,10 @@ var getTime = {
 }
 
 var root = {
-    value: function (name) {
+    value: (name) => {
         return document.documentElement.style.getPropertyValue(name.trim());
     },
-    replace: function (nameAndValue) {
+    replace: (nameAndValue) => {
         var info = nameAndValue.split(":");
         document.documentElement.style.setProperty(info[0].trim(), info[1].trim());
     }
@@ -79,6 +79,11 @@ export function LinkBlock(props) {
     return <div><a href={props.href}>{props.children}</a></div>;
 }
 
+function isPhone() {
+    var info = navigator.userAgent;
+    return /mobile/i.test(info)
+}
+
 export class Clock extends React.Component {
     constructor(props) {
         super(props);
@@ -89,6 +94,7 @@ export class Clock extends React.Component {
         this.timeID = setInterval(() => {
             this.setState({ date: new Date() });
         }, 0);
+        if (isPhone()) document.getElementById("clock").style.display = "none";
     }
 
     UNSAFE_componentWillMount() {

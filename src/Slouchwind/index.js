@@ -1,8 +1,8 @@
 import React from "react";
 import { Icon, LinkBlock, Clock, ColorMode } from "./head";
 import { Hitokoto, Link } from "./bottom";
-import "./index.css";
 import { RightMouse } from "./small";
+import "./index.css";
 
 const icon = "https://m.xiguacity.cn/post/6042be99fef5f8753d6c03c1/c3750ecf-94c1-4d3f-9f3a-4bf2834fd779.svg";
 
@@ -28,7 +28,7 @@ export function Bottom() {
     return (
         <div id="bottom">
             <Link>
-                <a href="https://qixie.rth1.me/" target="_blank">齐谐者</a>
+                <a href="https://qixie.vercel.app" target="_blank" rel="noreferrer">齐谐者</a>
                 <a href="./about.html">关于</a>
             </Link>
             <Hitokoto />
@@ -38,7 +38,7 @@ export function Bottom() {
 
 //返回时间/日期
 var getTime = {
-    time: function () {
+    time: () => {
         let date = new Date();
         let h = date.getHours();
         if (h < 10) { h = "0" + h; }
@@ -48,7 +48,7 @@ var getTime = {
         if (s < 10) { s = "0" + s; }
         return h + ":" + m + ":" + s;
     },
-    date: function () {
+    date: () => {
         let date = new Date();
         let y = date.getFullYear();
         let m = date.getMonth() + 1;
@@ -69,10 +69,10 @@ function runDate() {
 
 //root操作
 var root = {
-    value: function (name) {
+    value: (name) => {
         return document.documentElement.style.getPropertyValue(name.trim());
     },
-    replace: function (nameAndValue) {
+    replace: (nameAndValue) => {
         var info = nameAndValue.split(":");
         document.documentElement.style.setProperty(info[0].trim(), info[1].trim());
     }
@@ -87,11 +87,10 @@ export class Basic extends React.Component {
         let basicCss = "margin:5px 0";
         let colorCss = "color:" + root.value("--main") + ";margin:5px 0";
         console.log(
-            "\n" + "%c" + "感谢您的访问♪(･ω･)ﾉ" +
-            "\n" + "%c" + "Slouchwind Web  " + "%c" + document.getElementsByTagName("title")[0].innerHTML +
-            "\n" + "现在是 " + getTime.date() + " " + getTime.time() +
-            "\n" + "春鹄的个人网站" + "%c" + " 已上线 " + runDate() + " 天" +
-            "\n",
+            "\n%c感谢您的访问♪(･ω･)ﾉ" +
+            `${"\n"}%cSlouchwind Web  %c${document.getElementsByTagName("title")[0].innerHTML}` +
+            `${"\n"}现在是 ${getTime.date()} ${getTime.time()}` +
+            `${"\n"}春鹄的个人网站%c 已上线 ${runDate()} 天${"\n"}`,
             basicCss, colorCss, basicCss, colorCss
         );
     }

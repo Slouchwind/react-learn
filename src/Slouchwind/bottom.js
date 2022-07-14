@@ -12,7 +12,7 @@ var root = {
 }
 
 export function Link(props) {
-    return (<div id="A">{props.children}</div>);
+    return <div id="A">{props.children}</div>;
 }
 
 export class Hitokoto extends React.Component {
